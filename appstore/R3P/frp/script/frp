@@ -29,7 +29,7 @@ start(){
 	echo "[common]" > /etc/misstar/applications/frp/config/frpc.conf 
 	echo "server_addr = "$server_addr >> /etc/misstar/applications/frp/config/frpc.conf 
 	echo "server_port = "$server_port >> /etc/misstar/applications/frp/config/frpc.conf 
-	echo "privilege_token = "$privilege_token >> /etc/misstar/applications/frp/config/frpc.conf
+	echo "token = "$privilege_token >> /etc/misstar/applications/frp/config/frpc.conf
 	
 	cat /etc/misstar/applications/frp/config/frplist | while read line
 	do
@@ -74,4 +74,8 @@ status(){
 	else
 		echo -e '1\c'
 	fi
+}
+
+restart(){
+    stop; sleep 2; start
 }
